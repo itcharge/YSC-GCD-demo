@@ -10,7 +10,7 @@
 
 @interface ViewController ()
 
-/* ticketSurplusCount */
+/* 剩余火车票数 */
 @property (nonatomic, assign) int ticketSurplusCount;
 
 @end
@@ -25,66 +25,66 @@
     
     /* 任务+队列 相关方法 */
     
-    //    同步执行 + 并发队列
-//        [self syncConcurrent];
+//    同步执行 + 并发队列
+//    [self syncConcurrent];
     
-    //    异步执行 + 并发队列
-//        [self asyncConcurrent];
+//    异步执行 + 并发队列
+//    [self asyncConcurrent];
     
-    //    同步执行 + 串行队列
-//        [self syncSerial];
+//    同步执行 + 串行队列
+//    [self syncSerial];
     
-    //    异步执行 + 串行队列
-//        [self asyncSerial];
+//    异步执行 + 串行队列
+//    [self asyncSerial];
     
-    //    同步执行 + 主队列（主线程调用）
-//        [self syncMain];
+//    同步执行 + 主队列（主线程调用）
+//    [self syncMain];
     
-    //    同步执行 + 主队列（其他线程调用）
-//        [NSThread detachNewThreadSelector:@selector(syncMain) toTarget:self withObject:nil];
+//    同步执行 + 主队列（其他线程调用）
+//    [NSThread detachNewThreadSelector:@selector(syncMain) toTarget:self withObject:nil];
     
-    //    异步执行 + 主队列
-//        [self asyncMain];
+//    异步执行 + 主队列
+//    [self asyncMain];
     
     /* GCD 线程间通信 */
-    
-//        [self communication];
+
+//    [self communication];
     
     
     /* GCD 其他方法 */
     
-    //    栅栏方法 dispatch_barrier_async
-//        [self barrier];
+//    栅栏方法 dispatch_barrier_async
+//    [self barrier];
     
-    //    延时执行方法 dispatch_after
-//        [self after];
+//    延时执行方法 dispatch_after
+//    [self after];
     
-    //    一次性代码（只执行一次）dispatch_once
-    //    [self once];
+//    一次性代码（只执行一次）dispatch_once
+//    [self once];
     
-    //    快速迭代方法 dispatch_apply
-    //    [self apply];
+//    快速迭代方法 dispatch_apply
+//    [self apply];
     
     /* 队列组 gropu */
-    //    队列组 dispatch_group_notify
-//        [self groupNotify];
+//    队列组 dispatch_group_notify
+//    [self groupNotify];
     
-    //    队列组 dispatch_group_wait
-//        [self groupWait];
+//    队列组 dispatch_group_wait
+//    [self groupWait];
     
-    //    队列组 dispatch_group_enter、dispatch_group_leave
-//        [self groupEnterAndLeave];
+//    队列组 dispatch_group_enter、dispatch_group_leave
+//    [self groupEnterAndLeave];
     
     /* 信号量 dispatch_semaphore */
-    //    semaphore 线程同步
-//        [self semaphoreSync];
+//    semaphore 线程同步
+//    [self semaphoreSync];
     
-    //    semaphore 线程安全
-    //    非线程安全：不使用 semaphore
+//    semaphore 线程安全
+//    非线程安全：不使用 semaphore
 //    [self initTicketStatusNotSave];
     
-    //    线程安全：使用 semaphore 加锁
-    [self initTicketStatusSave];
+//    线程安全：使用 semaphore 加锁
+//    [self initTicketStatusSave];
 }
 
 #pragma mark - 任务+队列 相关方法
@@ -316,11 +316,13 @@
  * 线程间通信
  */
 - (void)communication {
+    // 获取全局并发队列
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    dispatch_queue_t mainQueue = dispatch_get_main_queue(); // 获取主队列
+    // 获取主队列
+    dispatch_queue_t mainQueue = dispatch_get_main_queue();
     
     dispatch_async(queue, ^{
-        // 追加任务
+        // 异步追加任务
         for (int i = 0; i < 2; ++i) {
             [NSThread sleepForTimeInterval:2];              // 模拟耗时操作
             NSLog(@"1---%@",[NSThread currentThread]);      // 打印当前线程
