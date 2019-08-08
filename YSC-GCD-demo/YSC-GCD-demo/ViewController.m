@@ -84,8 +84,9 @@
 //    [self initTicketStatusNotSave];
     
 //    线程安全：使用 semaphore 加锁
-//    [self initTicketStatusSave];
+    [self initTicketStatusSave];
 }
+
 
 #pragma mark - 任务+队列 相关方法
 
@@ -100,27 +101,21 @@
     dispatch_queue_t queue = dispatch_queue_create("net.bujige.testQueue", DISPATCH_QUEUE_CONCURRENT);
     
     dispatch_sync(queue, ^{
-        // 追加任务1
-        for (int i = 0; i < 2; ++i) {
-            [NSThread sleepForTimeInterval:2];              // 模拟耗时操作
-            NSLog(@"1---%@",[NSThread currentThread]);      // 打印当前线程
-        }
+        // 追加任务 1
+        [NSThread sleepForTimeInterval:2];              // 模拟耗时操作
+        NSLog(@"1---%@",[NSThread currentThread]);      // 打印当前线程
     });
     
     dispatch_sync(queue, ^{
-        // 追加任务2
-        for (int i = 0; i < 2; ++i) {
-            [NSThread sleepForTimeInterval:2];              // 模拟耗时操作
-            NSLog(@"2---%@",[NSThread currentThread]);      // 打印当前线程
-        }
+        // 追加任务 2
+        [NSThread sleepForTimeInterval:2];              // 模拟耗时操作
+        NSLog(@"2---%@",[NSThread currentThread]);      // 打印当前线程
     });
     
     dispatch_sync(queue, ^{
-        // 追加任务3
-        for (int i = 0; i < 2; ++i) {
-            [NSThread sleepForTimeInterval:2];              // 模拟耗时操作
-            NSLog(@"3---%@",[NSThread currentThread]);      // 打印当前线程
-        }
+        // 追加任务 3
+        [NSThread sleepForTimeInterval:2];              // 模拟耗时操作
+        NSLog(@"3---%@",[NSThread currentThread]);      // 打印当前线程
     });
     
     NSLog(@"syncConcurrent---end");
@@ -137,27 +132,21 @@
     dispatch_queue_t queue = dispatch_queue_create("net.bujige.testQueue", DISPATCH_QUEUE_CONCURRENT);
     
     dispatch_async(queue, ^{
-        // 追加任务1
-        for (int i = 0; i < 2; ++i) {
-            [NSThread sleepForTimeInterval:2];              // 模拟耗时操作
-            NSLog(@"1---%@",[NSThread currentThread]);      // 打印当前线程
-        }
+        // 追加任务 1
+        [NSThread sleepForTimeInterval:2];              // 模拟耗时操作
+        NSLog(@"1---%@",[NSThread currentThread]);      // 打印当前线程
     });
     
     dispatch_async(queue, ^{
-        // 追加任务2
-        for (int i = 0; i < 2; ++i) {
-            [NSThread sleepForTimeInterval:2];              // 模拟耗时操作
-            NSLog(@"2---%@",[NSThread currentThread]);      // 打印当前线程
-        }
+        // 追加任务 2
+        [NSThread sleepForTimeInterval:2];              // 模拟耗时操作
+        NSLog(@"2---%@",[NSThread currentThread]);      // 打印当前线程
     });
     
     dispatch_async(queue, ^{
-        // 追加任务3
-        for (int i = 0; i < 2; ++i) {
-            [NSThread sleepForTimeInterval:2];              // 模拟耗时操作
-            NSLog(@"3---%@",[NSThread currentThread]);      // 打印当前线程
-        }
+        // 追加任务 3
+        [NSThread sleepForTimeInterval:2];              // 模拟耗时操作
+        NSLog(@"3---%@",[NSThread currentThread]);      // 打印当前线程
     });
     
     NSLog(@"asyncConcurrent---end");
@@ -174,25 +163,19 @@
     dispatch_queue_t queue = dispatch_queue_create("net.bujige.testQueue", DISPATCH_QUEUE_SERIAL);
     
     dispatch_sync(queue, ^{
-        // 追加任务1
-        for (int i = 0; i < 2; ++i) {
-            [NSThread sleepForTimeInterval:2];              // 模拟耗时操作
-            NSLog(@"1---%@",[NSThread currentThread]);      // 打印当前线程
-        }
+        // 追加任务 1
+        [NSThread sleepForTimeInterval:2];              // 模拟耗时操作
+        NSLog(@"1---%@",[NSThread currentThread]);      // 打印当前线程
     });
     dispatch_sync(queue, ^{
-        // 追加任务2
-        for (int i = 0; i < 2; ++i) {
-            [NSThread sleepForTimeInterval:2];              // 模拟耗时操作
-            NSLog(@"2---%@",[NSThread currentThread]);      // 打印当前线程
-        }
+        // 追加任务 2
+        [NSThread sleepForTimeInterval:2];              // 模拟耗时操作
+        NSLog(@"2---%@",[NSThread currentThread]);      // 打印当前线程
     });
     dispatch_sync(queue, ^{
-        // 追加任务3
-        for (int i = 0; i < 2; ++i) {
-            [NSThread sleepForTimeInterval:2];              // 模拟耗时操作
-            NSLog(@"3---%@",[NSThread currentThread]);      // 打印当前线程
-        }
+        // 追加任务 3
+        [NSThread sleepForTimeInterval:2];              // 模拟耗时操作
+        NSLog(@"3---%@",[NSThread currentThread]);      // 打印当前线程
     });
     
     NSLog(@"syncSerial---end");
@@ -209,25 +192,19 @@
     dispatch_queue_t queue = dispatch_queue_create("net.bujige.testQueue", DISPATCH_QUEUE_SERIAL);
     
     dispatch_async(queue, ^{
-        // 追加任务1
-        for (int i = 0; i < 2; ++i) {
-            [NSThread sleepForTimeInterval:2];              // 模拟耗时操作
-            NSLog(@"1---%@",[NSThread currentThread]);      // 打印当前线程
-        }
+        // 追加任务 1
+        [NSThread sleepForTimeInterval:2];              // 模拟耗时操作
+        NSLog(@"1---%@",[NSThread currentThread]);      // 打印当前线程
     });
     dispatch_async(queue, ^{
-        // 追加任务2
-        for (int i = 0; i < 2; ++i) {
-            [NSThread sleepForTimeInterval:2];              // 模拟耗时操作
-            NSLog(@"2---%@",[NSThread currentThread]);      // 打印当前线程
-        }
+        // 追加任务 2
+        [NSThread sleepForTimeInterval:2];              // 模拟耗时操作
+        NSLog(@"2---%@",[NSThread currentThread]);      // 打印当前线程
     });
     dispatch_async(queue, ^{
-        // 追加任务3
-        for (int i = 0; i < 2; ++i) {
-            [NSThread sleepForTimeInterval:2];              // 模拟耗时操作
-            NSLog(@"3---%@",[NSThread currentThread]);      // 打印当前线程
-        }
+        // 追加任务 3
+        [NSThread sleepForTimeInterval:2];              // 模拟耗时操作
+        NSLog(@"3---%@",[NSThread currentThread]);      // 打印当前线程
     });
     
     NSLog(@"asyncSerial---end");
@@ -246,27 +223,21 @@
     dispatch_queue_t queue = dispatch_get_main_queue();
     
     dispatch_sync(queue, ^{
-        // 追加任务1
-        for (int i = 0; i < 2; ++i) {
-            [NSThread sleepForTimeInterval:2];              // 模拟耗时操作
-            NSLog(@"1---%@",[NSThread currentThread]);      // 打印当前线程
-        }
+        // 追加任务 1
+        [NSThread sleepForTimeInterval:2];              // 模拟耗时操作
+        NSLog(@"1---%@",[NSThread currentThread]);      // 打印当前线程
     });
     
     dispatch_sync(queue, ^{
-        // 追加任务2
-        for (int i = 0; i < 2; ++i) {
-            [NSThread sleepForTimeInterval:2];              // 模拟耗时操作
-            NSLog(@"2---%@",[NSThread currentThread]);      // 打印当前线程
-        }
+        // 追加任务 2
+        [NSThread sleepForTimeInterval:2];              // 模拟耗时操作
+        NSLog(@"2---%@",[NSThread currentThread]);      // 打印当前线程
     });
     
     dispatch_sync(queue, ^{
-        // 追加任务3
-        for (int i = 0; i < 2; ++i) {
-            [NSThread sleepForTimeInterval:2];              // 模拟耗时操作
-            NSLog(@"3---%@",[NSThread currentThread]);      // 打印当前线程
-        }
+        // 追加任务 3
+        [NSThread sleepForTimeInterval:2];              // 模拟耗时操作
+        NSLog(@"3---%@",[NSThread currentThread]);      // 打印当前线程
     });
     
     NSLog(@"syncMain---end");
@@ -283,27 +254,21 @@
     dispatch_queue_t queue = dispatch_get_main_queue();
     
     dispatch_async(queue, ^{
-        // 追加任务1
-        for (int i = 0; i < 2; ++i) {
-            [NSThread sleepForTimeInterval:2];              // 模拟耗时操作
-            NSLog(@"1---%@",[NSThread currentThread]);      // 打印当前线程
-        }
+        // 追加任务 1
+        [NSThread sleepForTimeInterval:2];              // 模拟耗时操作
+        NSLog(@"1---%@",[NSThread currentThread]);      // 打印当前线程
     });
     
     dispatch_async(queue, ^{
-        // 追加任务2
-        for (int i = 0; i < 2; ++i) {
-            [NSThread sleepForTimeInterval:2];              // 模拟耗时操作
-            NSLog(@"2---%@",[NSThread currentThread]);      // 打印当前线程
-        }
+        // 追加任务 2
+        [NSThread sleepForTimeInterval:2];              // 模拟耗时操作
+        NSLog(@"2---%@",[NSThread currentThread]);      // 打印当前线程
     });
     
     dispatch_async(queue, ^{
-        // 追加任务3
-        for (int i = 0; i < 2; ++i) {
-            [NSThread sleepForTimeInterval:2];              // 模拟耗时操作
-            NSLog(@"3---%@",[NSThread currentThread]);      // 打印当前线程
-        }
+        // 追加任务 3
+        [NSThread sleepForTimeInterval:2];              // 模拟耗时操作
+        NSLog(@"3---%@",[NSThread currentThread]);      // 打印当前线程
     });
     
     NSLog(@"asyncMain---end");
@@ -322,11 +287,9 @@
     dispatch_queue_t mainQueue = dispatch_get_main_queue();
     
     dispatch_async(queue, ^{
-        // 异步追加任务
-        for (int i = 0; i < 2; ++i) {
-            [NSThread sleepForTimeInterval:2];              // 模拟耗时操作
-            NSLog(@"1---%@",[NSThread currentThread]);      // 打印当前线程
-        }
+        // 异步追加任务 1
+        [NSThread sleepForTimeInterval:2];              // 模拟耗时操作
+        NSLog(@"1---%@",[NSThread currentThread]);      // 打印当前线程
         
         // 回到主线程
         dispatch_async(mainQueue, ^{
@@ -347,41 +310,31 @@
     dispatch_queue_t queue = dispatch_queue_create("net.bujige.testQueue", DISPATCH_QUEUE_CONCURRENT);
     
     dispatch_async(queue, ^{
-        // 追加任务1
-        for (int i = 0; i < 2; ++i) {
-            [NSThread sleepForTimeInterval:2];              // 模拟耗时操作
-            NSLog(@"1---%@",[NSThread currentThread]);      // 打印当前线程
-        }
+        // 追加任务 1
+        [NSThread sleepForTimeInterval:2];              // 模拟耗时操作
+        NSLog(@"1---%@",[NSThread currentThread]);      // 打印当前线程
     });
     dispatch_async(queue, ^{
-        // 追加任务2
-        for (int i = 0; i < 2; ++i) {
-            [NSThread sleepForTimeInterval:2];              // 模拟耗时操作
-            NSLog(@"2---%@",[NSThread currentThread]);      // 打印当前线程
-        }
+        // 追加任务 2
+        [NSThread sleepForTimeInterval:2];              // 模拟耗时操作
+        NSLog(@"2---%@",[NSThread currentThread]);      // 打印当前线程
     });
     
     dispatch_barrier_async(queue, ^{
         // 追加任务 barrier
-        for (int i = 0; i < 2; ++i) {
-            [NSThread sleepForTimeInterval:2];              // 模拟耗时操作
-            NSLog(@"barrier---%@",[NSThread currentThread]);// 打印当前线程
-        }
+        [NSThread sleepForTimeInterval:2];              // 模拟耗时操作
+        NSLog(@"barrier---%@",[NSThread currentThread]);// 打印当前线程
     });
     
     dispatch_async(queue, ^{
-        // 追加任务3
-        for (int i = 0; i < 2; ++i) {
-            [NSThread sleepForTimeInterval:2];              // 模拟耗时操作
-            NSLog(@"3---%@",[NSThread currentThread]);      // 打印当前线程
-        }
+        // 追加任务 3
+        [NSThread sleepForTimeInterval:2];              // 模拟耗时操作
+        NSLog(@"3---%@",[NSThread currentThread]);      // 打印当前线程
     });
     dispatch_async(queue, ^{
-        // 追加任务4
-        for (int i = 0; i < 2; ++i) {
-            [NSThread sleepForTimeInterval:2];              // 模拟耗时操作
-            NSLog(@"4---%@",[NSThread currentThread]);      // 打印当前线程
-        }
+        // 追加任务 4
+        [NSThread sleepForTimeInterval:2];              // 模拟耗时操作
+        NSLog(@"4---%@",[NSThread currentThread]);      // 打印当前线程
     });
 }
 
@@ -393,7 +346,7 @@
     NSLog(@"asyncMain---begin");
     
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        // 2.0秒后异步追加任务代码到主队列，并开始执行
+        // 2.0 秒后异步追加任务代码到主队列，并开始执行
         NSLog(@"after---%@",[NSThread currentThread]);  // 打印当前线程
     });
 }
@@ -404,7 +357,7 @@
 - (void)once {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        // 只执行1次的代码(这里面默认是线程安全的)
+        // 只执行 1 次的代码（这里面默认是线程安全的）
     });
 }
 
@@ -433,27 +386,22 @@
     dispatch_group_t group =  dispatch_group_create();
     
     dispatch_group_async(group, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        // 追加任务1
-        for (int i = 0; i < 2; ++i) {
-            [NSThread sleepForTimeInterval:2];              // 模拟耗时操作
-            NSLog(@"1---%@",[NSThread currentThread]);      // 打印当前线程
-        }
+        // 追加任务 1
+        [NSThread sleepForTimeInterval:2];              // 模拟耗时操作
+        NSLog(@"1---%@",[NSThread currentThread]);      // 打印当前线程
     });
     
     dispatch_group_async(group, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        // 追加任务2
-        for (int i = 0; i < 2; ++i) {
-            [NSThread sleepForTimeInterval:2];              // 模拟耗时操作
-            NSLog(@"2---%@",[NSThread currentThread]);      // 打印当前线程
-        }
+        // 追加任务 2
+        [NSThread sleepForTimeInterval:2];              // 模拟耗时操作
+        NSLog(@"2---%@",[NSThread currentThread]);      // 打印当前线程
     });
     
     dispatch_group_notify(group, dispatch_get_main_queue(), ^{
-        // 等前面的异步任务1、任务2都执行完毕后，回到主线程执行下边任务
-        for (int i = 0; i < 2; ++i) {
-            [NSThread sleepForTimeInterval:2];              // 模拟耗时操作
-            NSLog(@"3---%@",[NSThread currentThread]);      // 打印当前线程
-        }
+        // 等前面的异步任务 1、任务 2 都执行完毕后，回到主线程执行下边任务
+        [NSThread sleepForTimeInterval:2];              // 模拟耗时操作
+        NSLog(@"3---%@",[NSThread currentThread]);      // 打印当前线程
+
         NSLog(@"group---end");
     });
 }
@@ -468,19 +416,15 @@
     dispatch_group_t group =  dispatch_group_create();
     
     dispatch_group_async(group, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        // 追加任务1
-        for (int i = 0; i < 2; ++i) {
-            [NSThread sleepForTimeInterval:2];              // 模拟耗时操作
-            NSLog(@"1---%@",[NSThread currentThread]);      // 打印当前线程
-        }
+        // 追加任务 1
+        [NSThread sleepForTimeInterval:2];              // 模拟耗时操作
+        NSLog(@"1---%@",[NSThread currentThread]);      // 打印当前线程
     });
     
     dispatch_group_async(group, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        // 追加任务2
-        for (int i = 0; i < 2; ++i) {
-            [NSThread sleepForTimeInterval:2];              // 模拟耗时操作
-            NSLog(@"2---%@",[NSThread currentThread]);      // 打印当前线程
-        }
+        // 追加任务 2
+        [NSThread sleepForTimeInterval:2];              // 模拟耗时操作
+        NSLog(@"2---%@",[NSThread currentThread]);      // 打印当前线程
     });
     
     // 等待上面的任务全部完成后，会往下继续执行（会阻塞当前线程）
@@ -493,8 +437,7 @@
 /**
  * 队列组 dispatch_group_enter、dispatch_group_leave
  */
-- (void)groupEnterAndLeave
-{
+- (void)groupEnterAndLeave {
     NSLog(@"currentThread---%@",[NSThread currentThread]);  // 打印当前线程
     NSLog(@"group---begin");
     
@@ -502,37 +445,29 @@
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_group_enter(group);
     dispatch_async(queue, ^{
-        // 追加任务1
-        for (int i = 0; i < 2; ++i) {
-            [NSThread sleepForTimeInterval:2];              // 模拟耗时操作
-            NSLog(@"1---%@",[NSThread currentThread]);      // 打印当前线程
-        }
+        // 追加任务 1
+        [NSThread sleepForTimeInterval:2];              // 模拟耗时操作
+        NSLog(@"1---%@",[NSThread currentThread]);      // 打印当前线程
+
         dispatch_group_leave(group);
     });
     
     dispatch_group_enter(group);
     dispatch_async(queue, ^{
-        // 追加任务2
-        for (int i = 0; i < 2; ++i) {
-            [NSThread sleepForTimeInterval:2];              // 模拟耗时操作
-            NSLog(@"2---%@",[NSThread currentThread]);      // 打印当前线程
-        }
+        // 追加任务 2
+        [NSThread sleepForTimeInterval:2];              // 模拟耗时操作
+        NSLog(@"2---%@",[NSThread currentThread]);      // 打印当前线程
+        
         dispatch_group_leave(group);
     });
     
     dispatch_group_notify(group, dispatch_get_main_queue(), ^{
         // 等前面的异步操作都执行完毕后，回到主线程.
-        for (int i = 0; i < 2; ++i) {
-            [NSThread sleepForTimeInterval:2];              // 模拟耗时操作
-            NSLog(@"3---%@",[NSThread currentThread]);      // 打印当前线程
-        }
+        [NSThread sleepForTimeInterval:2];              // 模拟耗时操作
+        NSLog(@"3---%@",[NSThread currentThread]);      // 打印当前线程
+    
         NSLog(@"group---end");
     });
-    
-//    // 等待上面的任务全部完成后，会往下继续执行（会阻塞当前线程）
-//    dispatch_group_wait(group, DISPATCH_TIME_FOREVER);
-//
-//    NSLog(@"group---end");
 }
 
 #pragma mark - semaphore 线程同步
@@ -550,7 +485,7 @@
     
     __block int number = 0;
     dispatch_async(queue, ^{
-        // 追加任务1
+        // 追加任务 1
         [NSThread sleepForTimeInterval:2];              // 模拟耗时操作
         NSLog(@"1---%@",[NSThread currentThread]);      // 打印当前线程
         
@@ -566,7 +501,7 @@
 #pragma mark - semaphore 线程安全
 /**
  * 非线程安全：不使用 semaphore
- * 初始化火车票数量、卖票窗口(非线程安全)、并开始卖票
+ * 初始化火车票数量、卖票窗口（非线程安全）、并开始卖票
  */
 - (void)initTicketStatusNotSave {
     NSLog(@"currentThread---%@",[NSThread currentThread]);  // 打印当前线程
@@ -590,7 +525,7 @@
 }
 
 /**
- * 售卖火车票(非线程安全)
+ * 售卖火车票（非线程安全）
  */
 - (void)saleTicketNotSafe {
     while (1) {
@@ -599,7 +534,7 @@
             self.ticketSurplusCount--;
             NSLog(@"%@", [NSString stringWithFormat:@"剩余票数：%d 窗口：%@", self.ticketSurplusCount, [NSThread currentThread]]);
             [NSThread sleepForTimeInterval:0.2];
-        } else { //如果已卖完，关闭售票窗口
+        } else { // 如果已卖完，关闭售票窗口
             NSLog(@"所有火车票均已售完");
             break;
         }
@@ -609,7 +544,7 @@
 
 /**
  * 线程安全：使用 semaphore 加锁
- * 初始化火车票数量、卖票窗口(线程安全)、并开始卖票
+ * 初始化火车票数量、卖票窗口（线程安全）、并开始卖票
  */
 - (void)initTicketStatusSave {
     NSLog(@"currentThread---%@",[NSThread currentThread]);  // 打印当前线程
@@ -635,18 +570,18 @@
 }
 
 /**
- * 售卖火车票(线程安全)
+ * 售卖火车票（线程安全）
  */
 - (void)saleTicketSafe {
     while (1) {
         // 相当于加锁
         dispatch_semaphore_wait(semaphoreLock, DISPATCH_TIME_FOREVER);
         
-        if (self.ticketSurplusCount > 0) {  //如果还有票，继续售卖
+        if (self.ticketSurplusCount > 0) {  // 如果还有票，继续售卖
             self.ticketSurplusCount--;
             NSLog(@"%@", [NSString stringWithFormat:@"剩余票数：%d 窗口：%@", self.ticketSurplusCount, [NSThread currentThread]]);
             [NSThread sleepForTimeInterval:0.2];
-        } else { //如果已卖完，关闭售票窗口
+        } else { // 如果已卖完，关闭售票窗口
             NSLog(@"所有火车票均已售完");
             
             // 相当于解锁
