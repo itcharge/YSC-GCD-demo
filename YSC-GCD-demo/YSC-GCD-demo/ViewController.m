@@ -84,7 +84,7 @@
 //    [self initTicketStatusNotSave];
     
 //    线程安全：使用 semaphore 加锁
-    [self initTicketStatusSave];
+//    [self initTicketStatusSave];
 }
 
 
